@@ -1,95 +1,127 @@
-import Image from 'next/image'
+'use client'
+import { useState } from 'react'
 import styles from './page.module.css'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+//Component with props args passing 
+
+// export default function Home() {
+//   return (
+//     <main className={styles.main}>
+// {/* <h1> Component args passing into component </h1> */ }
+//       <h1>Home Page</h1>
+//       <User name="jigar" />
+//       <User />
+//       <User name="peter" />
+//     </main>
+//   )
+// }
+
+// const User = (props) =>{
+//   return <div>
+//     <h2> User name is {props.name} </h2>
+//   </div>
+// }
+/* -----------------------------------------------------------------------------------------------------------------*/
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+// Functions 
+
+// /* How can we call function ? 
+// 1. on click event of the button 
+// 2. on click event of button passing the args into function
+// */
+// export default function Home() {
+//   /*
+// 1. on click event of the button 
+//   const apple = () =>{
+//     alert("fruit");
+//   }
+//   */
+
+//   /*
+// 2. on click event of button passing the args into function
+// const apple = (item) =>{
+//   alert(item);
+// }
+// */
+//   return (
+//     <main className={styles.main}>
+//       <h1>Events, functions and states </h1>
+//       {/* <button onClick={apple}> Click Me </button> 1. on click event of the button  */}
+//       {/* <button onClick={()=>apple("fruit")}> Click Me </button> 2. on click event of button passing the args into function */}
+//     </main>
+//   )
+// }
+// -------------------------------------------------------------------------------------------------------------------------------------------
+
+/*
+  States(Usestate)
+*/
+// export default function Home() {
+//   const [name, setName] = useState("Jigar");
+//   const apple = (item) => {
+//     // normalvariable = "Hello"; //normal variable
+//     setName(item); //updating name state with the value which will given us as args into the function call
+//   }
+
+//   //making component into another component and calling it into return state
+//   const InnerComponent = () => {
+//     return (
+//       <h1> Inner component </h1>
+//     )
+//   }
+//   return (
+//     <main className={styles.main}>
+//       <h1>Events, functions and states {name} </h1>
+//       <button onClick={() => apple("fruit")}> Click Me </button>
+//       <InnerComponent />
+//       {/* {InnerComponent()}; //call component as function */}
+//     </main>
+//   )
+// }
+
+
+// --------------------------------------------------------------------------------------------------------------
+
+/*
+Routing - LINK & NAVIGATION 
+
+*/
+
 
 export default function Home() {
+  const router = useRouter();
+  const navigate = (name) => {
+    router.push(name);
+  }
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main>
+      <h1>Basic Routing - LINK & NAVIGATION</h1>
+      <Link href="login"> GO To Login Page </Link> <br />
+      <Link href="about"> GO To About Page </Link>
+      <br />
+      <br />
+      <br />
+      <button onClick={() => navigate("login")}> Go To Login Page </button> <br />
+      <button onClick={() => navigate("about")}> Go To About Page </button>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <br />
+      <br />
+      <br />
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <Link href="about/aboutstudent">Go To About Page Of Student</Link>
+      <br />
+      <Link href="about/aboutcollege">Go To About Page Of College</Link>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+      <br />
+      <br />
+      <br />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <button onClick={() => navigate("about/aboutstudent")}>Go To About Page Of Student</button>
+      <br />
+      <button onClick={() => navigate("about/aboutcollege")}> Go To About Page Of College </button>
     </main>
   )
 }
