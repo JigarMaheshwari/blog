@@ -5,7 +5,7 @@ export default function Lectures({params}){
     return (
         <div>
             <h1> Day of college {params.lectures[0]} </h1>
-            <h2>Lecture No. {params.lectures[1]}</h2>
+            <h2> Lecture No. {params.lectures[1]} </h2>
         </div>
     )
 }
