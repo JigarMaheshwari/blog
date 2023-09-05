@@ -8,6 +8,7 @@ import custom from './custom.module.css';
 import outsidecss from "@/style/othercss.module.css";
 import other from "./other.module.css";
 import style from "./style.module.css";
+import { Roboto } from 'next/font/google';
 //Component with props args passing 
 
 // export default function Home() {
@@ -144,9 +145,15 @@ Routing - LINK & NAVIGATION
 //   )
 // }
 
+const robots = Roboto({
+  weight:'100',
+  subsets:['latin'],
+  display:'swap'
+});
 
 export default function Home() {
   const [color,setColor] = useState("red");
+
   return (
     <main>
       {/* <h1>Style and CSS with next js</h1>
@@ -157,7 +164,25 @@ export default function Home() {
       <h2 className={outsidecss.main}>Heading 4 with other css module or css modular concept</h2> */}
       <h1 className={color==="red"?style.red : style.green}> Condition style </h1>
       <h2 style={{backgroundColor:color==="red"?"red":"green"}}>Heading 2</h2>
-      <button onClick={()=>setColor("green")}>Update Color</button>
+      <button onClick={()=>setColor("green")}>Update To Green Color</button>
+      <br/>
+      <button onClick={()=>setColor("red")}>Update To Red Color</button>
+
+
+
+      {/* fonts  */}
+
+      <h1>Font Optimization In Next JS</h1>
+      <h1>Font Optimization In Next JS</h1>
+      {/* <h1 style={{fontFamily:'Roboto',fontWeight:100}}>Font With Link Tag In Next JS</h1> */}
+      <h1 className={robots.className}>Font With Next JS fature</h1>
+
+      <h1> Generate MetaData In Next JS </h1>
+
+      <h1> Static Assets In Next </h1>
+      <img src="/dummy.png" />
+
+      
     </main>
   )
 }
